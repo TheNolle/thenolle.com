@@ -1,62 +1,60 @@
-[![Copyright](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=50&duration=3000&pause=2000&color=EB87F7&center=true&vCenter=true&width=1000&height=50&lines=Nolly)](https://thenolle.com)
+# 🚀 TheNolle.com
+## A CLI-like Personal Website
 
-# ReactJS TypeScript App Template
+Revamped version of thenolle.com using React & TypeScript. This interactive, CLI-style website showcases my portfolio, skills, and projects in a unique, user-friendly format.
 
-#### What is this ReactJS TypeScript Template?
+### 🗃️ Summary
+1. [🎯 Features](#-features)
+2. [💻 Getting Started](#-getting-started)
+3. [📦 Built With](#-built-with)
+4. [🔄 Updates](#-updates)
+5. [📜 License](#-license)
+6. [🙌 Contribution](#-contribution)
+7. [📬 Contact](#-contact)
+8. [🫰 Support](#-support)
 
-Tired of creating a new ReactJS project from scratch? Even worse by using create-react-app? Well, this is the TypeScript template for you! This template is a basic one using TypeScript, Babel, Webpack, React, React Dom, React Router Dom, SCSS, etc. I don't provide custom things, just a base TypeScript template to replace create react app and to help react developers to use the latest packages.
+### 🎯 Features
+* Interactive Command Line Interface
+* Fast and responsive design
+* Built with React & TypeScript
 
----
-
-## Getting Started
-These instructions will get you a copy of the project up and running on your local machine for development purposes.
-
-### Prerequisites
-- Git
-> Install [Git](https://git-scm.com/) for your system.
-> Check that git is correctly installed by opening a Terminal and doing `git -v`.
-- NodeJS
-> Install [NodeJS](https://nodejs.org/) (I recommend using [Node Version Manager (Linux)](https://github.com/nvm-sh/nvm) or [Node Version Manager (Windows)](https://github.com/coreybutler/nvm-windows)).
-> Check that [NodeJS](https://nodejs.org/) & [npm](https://www.npmjs.com/) are correctly installed by opening a Terminal and doing `node -v` and `npm -v`.
-
-### How to use
-
-#### 1. Clone the repository
-##### Command Line
-```sh
-# Clone the repository
-git clone https://github.com/TheNolle/ReactJS-TypeScript-Template
-# Enter the cloned repository
-cd ReactJS-TypeScript-Template
+### 💻 Getting Started
+Clone the repository and install dependencies:
+```bash
+git clone https://github.com/TheNolle/TheNolle.com
+cd TheNolle.com
+npm install
+pnpm install # if you prefer [pnpm] (personal preference)
+```
+Start the development server:
+```bash
+npm run dev
+pnpm run dev # if you prefer [pnpm]
 ```
 
-#### 2. Install the required dependencies (Command Line Only)
-Open a terminal in the cloned repository
-Run the command npm -v to make sure [NodeJS] works there
-Run npm install to install the dependencies
-
-#### 3. Run the Application with your modifications
-In the same terminal run this: npm run start and enjoy. 
-
----
-
-## Built With
+### 📦 Built With
+* React
 * TypeScript
 * Babel
 * Webpack
-* React
-* React Dom
 * React Router Dom
 * SCSS
 
+### 🔄 Updates
+Stay tuned for updates and improvements!
 
-## License
-The code is open source under the MIT License. However, if you want to use the code for your own projects, you must credit the original author.
+### 📜 License
+This project is open source and available under the [MIT License](LICENSE).
 
+### 🙌 Contribution
+Contributions, issues, and feature requests are welcome!
 
-## Contact
-* [Website](https://thenolle.com)
-* [Twitter](https://twitter.com/thenolly_)
+### 📬 Contact
+For any questions, feel free to reach out to me:
 * [Discord](https://discord.com/invite/86yVsMVN9z)
-* [Patreon](https://patreon.com/_nolly)
+* [Twitter](https://twitter.com/TheNolly_)
+
+### 🫰 Support
+Any support is greatly appreciated:
+* [Patreon](https://www.patreon.com/TheNolle)
 * [Ko-Fi](https://ko-fi.com/nolly__)
