@@ -1,0 +1,53 @@
+@keyframes blink {
+    from,
+    to {
+        color: transparent;
+    }
+    50% {
+        color: var(--text-color);
+    }
+}
+
+.terminal-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 100vh;
+    padding: 0.5rem;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: var(--primary-font);
+    overflow-y: auto;
+
+    pre {
+        font-size: 1rem;
+        font-family: var(--primary-font);
+    }
+
+    .terminal-input-container {
+        display: flex;
+        width: 100%;
+
+        .terminal-input {
+            font-size: 1rem;
+            margin-left: 0.5rem;
+            color: inherit;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            caret-color: transparent;
+            font-family: var(--primary-font);
+        }
+
+        .caret {
+            animation: blink 1s infinite;
+        }
+
+        .shadow {
+            position: absolute;
+            white-space: pre;
+            opacity: 0;
+        }
+    }
+}

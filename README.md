@@ -28,8 +28,8 @@ pnpm install # if you prefer [pnpm] (personal preference)
 ```
 Start the development server:
 ```bash
-npm run dev
-pnpm run dev # if you prefer [pnpm]
+npm run start
+pnpm run start # if you prefer [pnpm]
 ```
 
 ### 📦 Built With
