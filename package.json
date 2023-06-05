@@ -1,6 +1,6 @@
 {
-  "name": "reactjs-template",
-  "description": "Tired of creating a new ReactJS project from scratch? Even worse by using create-react-app? Well, this is the TypeScript template for you!",
+  "name": "thenolle.com",
+  "description": "Revamped version of thenolle.com built with React & TypeScript. This CLI-like site is fast, maintainable, and user-friendly. It showcases my projects, skills, and work in a unique, interactive format. TypeScript ensures safe, efficient development and ease of future maintenance.",
   "license": "MIT",
   "version": "1.0.0",
   "author": "Nolly",
@@ -21,7 +21,7 @@
     "@babel/preset-env": "^7.22.4",
     "@babel/preset-react": "^7.22.3",
     "@babel/preset-typescript": "^7.21.5",
-    "@types/react": "^18.2.7",
+    "@types/react": "^18.2.8",
     "@types/react-dom": "^18.2.4",
     "babel-loader": "^9.1.2",
     "css-loader": "^6.8.1",
@@ -29,9 +29,9 @@
     "sass": "^1.62.1",
     "sass-loader": "^13.3.1",
     "style-loader": "^3.3.3",
-    "typescript": "^5.0.4",
-    "webpack": "^5.84.1",
-    "webpack-cli": "^5.1.1",
+    "typescript": "^5.1.3",
+    "webpack": "^5.85.1",
+    "webpack-cli": "^5.1.3",
     "webpack-dev-server": "^4.15.0"
   }
 }
