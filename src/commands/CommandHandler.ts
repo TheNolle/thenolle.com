@@ -1,4 +1,4 @@
-import { clearCommand, helloCommand } from '../commands'
+import { clearCommand, helloCommand } from './commands'
 
 export default class CommandHandler {
     private commands: Record<string, (args: string[]) => string>

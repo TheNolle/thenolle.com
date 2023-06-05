@@ -4,25 +4,27 @@
         color: transparent;
     }
     50% {
-        color: var(--text-color);
+        color: var(--blank-primary);
     }
 }
 
 .terminal-container {
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
     height: 100vh;
     padding: 0.5rem;
-    background-color: var(--background-color);
-    color: var(--text-color);
-    font-family: var(--primary-font);
+    background-color: var(--colored-tertiary);
+    color: var(--blank-primary);
     overflow-y: auto;
+
+    &.active {
+        display: flex;
+    }
 
     pre {
         font-size: 1rem;
-        font-family: var(--primary-font);
     }
 
     .terminal-input-container {
@@ -37,7 +39,6 @@
             border: none;
             outline: none;
             caret-color: transparent;
-            font-family: var(--primary-font);
         }
 
         .caret {
