@@ -1,5 +1,5 @@
 .sidebar-container {
-    width: 18rem;
+    width: 20rem;
     background-color: var(--colored-secondary);
     color: var(--blank-primary);
     padding: 0.5rem;
@@ -20,6 +20,9 @@
         overflow-y: auto;
 
         .terminal-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             padding: 0.5rem;
             padding-left: 1rem;
             color: var(--blank-secondary);
@@ -30,6 +33,26 @@
                 background-color: var(--colored-primary);
                 color: var(--blank-primary);
                 font-weight: bold;
+            }
+
+            &:hover {
+                background-color: var(--colored-tertiary);
+                color: var(--blank-primary);
+
+                svg {
+                    display: inline-block;
+                }
+            }
+
+            svg {
+                display: none;
+                font-size: inherit;
+                margin-left: 8px;
+
+                &:hover {
+                    color: var(--colored-tertiary);
+                    filter: drop-shadow(0 0 0.25rem var(--blank-primary));
+                }
             }
         }
     }

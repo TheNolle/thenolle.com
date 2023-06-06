@@ -1,4 +1,9 @@
 .app-container {
     display: flex;
     height: 100vh;
+
+    .terminals-container,
+    .configuration-container {
+        width: 100%;
+    }
 }
