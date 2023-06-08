@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
-import { Route, Routes } from 'react-router-dom'
 import randomWords from 'random-words'
 
 import './App.scss'
 
 import Sidebar from './components/Sidebar/Sidebar'
 import Terminal from './components/Terminal/Terminal'
-import Configuration from './components/Configuration/Configuration'
 
 export default function App(): JSX.Element {
     const [terminals, setTerminals] = useState<string[]>([generateTerminalName()])
@@ -29,22 +27,13 @@ export default function App(): JSX.Element {
     }
 
     function generateTerminalName(): string {
-        let name = ''
-        while (name.length < 20) {
-            const word = randomWords({ exactly: 1, maxLength: 25 - name.length})
-            if (name.length + word.length + 1 <= 20) name += word + '-'
-            else break
-        }
-        return name.trim().replace(/-$/, '')
+        return randomWords({ maxLength: 8, join: '-', exactly: 3 }).replace(/ /g, '-').trim()
     }
 
     return (
         <div className="app-container">
             <Sidebar onAddTerminal={addTerminal} terminals={terminals} activeTerminal={activeTerminal} onTerminalSelect={handleTerminalSelect} onTerminalRemove={handleTerminalRemove} />
-            <Routes>
-                <Route path="/" element={<div className="terminals-container">{terminals.map((terminalName) => (<Terminal key={terminalName} name={terminalName} isActive={terminalName === activeTerminal} />))}</div>} />
-                <Route path="/configuration" element={<Configuration />} />
-            </Routes>
+            <div className="terminals-container">{terminals.map((terminalName) => (<Terminal key={terminalName} name={terminalName} isActive={terminalName === activeTerminal} />))}</div>
         </div>
     )
 }

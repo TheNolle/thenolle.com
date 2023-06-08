@@ -1,5 +1,5 @@
-import { useEffect } from 'react'
-import CommandHandler from '../commands/CommandHandler'
+import React, { useEffect } from 'react'
+import CommandHandler from './CommandHandler'
 
 export function useFocusInput(isActive: boolean, inputRef: React.RefObject<HTMLInputElement | null>): void {
     useEffect(() => {
@@ -25,26 +25,39 @@ export function useNavigation(isActive: boolean, location: any, navigate: any): 
     }, [isActive, location.pathname, navigate])
 }
 
-export function handleEnter(event: React.KeyboardEvent, input: string, commandHandler: CommandHandler, setOutput: React.Dispatch<React.SetStateAction<string>>, setInput: React.Dispatch<React.SetStateAction<string>>, setCommandHistory: React.Dispatch<React.SetStateAction<string[]>>, setHistoryIndex: React.Dispatch<React.SetStateAction<number>>, commandHistory: string[], historyIndex: number): void {
+export function handleEnter(event: React.KeyboardEvent, input: string, commandHandler: CommandHandler, setOutput: React.Dispatch<React.SetStateAction<React.ReactNode>>, setInput: React.Dispatch<React.SetStateAction<string>>, setCommandHistory: React.Dispatch<React.SetStateAction<string[]>>, setHistoryIndex: React.Dispatch<React.SetStateAction<number>>, commandHistory: string[], historyIndex: number): void {
     if (event.key === 'Enter') {
-        event.preventDefault();
+        event.preventDefault()
 
-        const { prefix, output: commandOutput } = commandHandler.handle(input);
-        const formattedOutput = `${prefix} ${input}\n${commandOutput}`;
+        const { prefix, output: commandOutput } = commandHandler.handle(input)
+        const formattedOutput = `${prefix} ${input}\n${commandOutput}`
 
-        if (input.trim() === 'clear') setOutput('');
-        else setOutput((prevOutput) => (prevOutput ? `${prevOutput}\n${formattedOutput}` : formattedOutput));
+        if (input.trim() === 'clear') setOutput('')
+        else {
+            if (typeof commandOutput === 'string')
+                setOutput((prevOutput) => <>
+                    {prevOutput}
+                    <div>{`${prefix} ${input}`}</div>
+                    <div>{commandOutput}</div>
+                </>)
+            else
+                setOutput((prevOutput) => <>
+                    {prevOutput}
+                    <div>{`${prefix} ${input}`}</div>
+                    <div>{commandOutput}</div>
+                </>)
+        }
 
-        setInput('');
+        setInput('')
 
-        setCommandHistory((prevHistory) => [...prevHistory, input]);
-        setHistoryIndex(-1);
+        setCommandHistory((prevHistory) => [...prevHistory, input])
+        setHistoryIndex(-1)
     } else if (event.key === 'ArrowUp') {
-        event.preventDefault();
-        navigateCommandHistory('up', setHistoryIndex, commandHistory, setInput, historyIndex);
+        event.preventDefault()
+        navigateCommandHistory('up', setHistoryIndex, commandHistory, setInput, historyIndex)
     } else if (event.key === 'ArrowDown') {
-        event.preventDefault();
-        navigateCommandHistory('down', setHistoryIndex, commandHistory, setInput, historyIndex);
+        event.preventDefault()
+        navigateCommandHistory('down', setHistoryIndex, commandHistory, setInput, historyIndex)
     }
 }
 
