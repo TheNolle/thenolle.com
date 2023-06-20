@@ -28,6 +28,16 @@ export default function App(): JSX.Element {
         localStorage.setItem('activeTerminal', serializedActiveTerminal)
     }, [activeTerminal])
 
+    useEffect(() => {
+        const savedOutputs = JSON.parse(localStorage.getItem('outputs') || '{}')
+        for (let terminalName of terminals) {
+            if (!savedOutputs[terminalName]) {
+                savedOutputs[terminalName] = []
+            }
+        }
+        localStorage.setItem('outputs', JSON.stringify(savedOutputs))
+    }, [terminals])
+
     function addTerminal() {
         const newTerminalName = generateTerminalName()
         setTerminals((prevTerminals) => [...prevTerminals, newTerminalName])
@@ -52,6 +62,10 @@ export default function App(): JSX.Element {
             delete commandHistoryObject[terminalName]
             localStorage.setItem('commandHistory', JSON.stringify(commandHistoryObject))
         }
+
+        const savedOutputs = JSON.parse(localStorage.getItem('outputs') || '{}')
+        delete savedOutputs[terminalName]
+        localStorage.setItem('outputs', JSON.stringify(savedOutputs))
     }
 
     function generateTerminalName(): string {

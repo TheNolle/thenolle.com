@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import CommandHandler from '../../other/ts/CommandHandler'
-import { handleEnter } from '../../other/ts/utils'
+import { useHandleEnter } from '../../other/ts/utils'
 
 import './Terminal.scss'
 
@@ -29,6 +29,17 @@ export default function Terminal({ name, isActive }: TerminalProps): JSX.Element
     const commandHandler = new CommandHandler()
 
     useEffect(() => {
+        const savedOutputs = JSON.parse(localStorage.getItem('outputs') || '{}')
+        if (Array.isArray(savedOutputs[name])) setOutput(savedOutputs[name].map(JSON.parse))
+    }, [name])
+
+    useEffect(() => {
+        const savedOutputs = JSON.parse(localStorage.getItem('outputs') || '{}')
+        savedOutputs[name] = safeStringify(output)
+        localStorage.setItem('outputs', JSON.stringify(savedOutputs))
+    }, [name, output])
+
+    useEffect(() => {
         if (commandHistory[commandHistory.length - 1] === 'clear-history') setCommandHistory(['clear-history'])
         let updatedCommandHistoryObject = { ...commandHistoryObject }
         updatedCommandHistoryObject[name] = commandHistory
@@ -43,21 +54,26 @@ export default function Terminal({ name, isActive }: TerminalProps): JSX.Element
     }, [isActive])
 
     useEffect(() => {
-        if (!isActive && location.pathname !== '/') {
-            navigate('/')
-        }
+        if (!isActive && location.pathname !== '/') navigate('/')
     }, [isActive, location.pathname, navigate])
 
     useEffect(() => {
-        const timer = setTimeout(() => {
-            scrollDivRef.current?.scrollIntoView({ behavior: "smooth" })
-        }, 100)
+        const timer = setTimeout(() => scrollDivRef.current?.scrollIntoView({ behavior: "smooth" }), 100)
         return () => clearTimeout(timer)
     }, [output])
 
-    async function handleKeyPress(event: React.KeyboardEvent) {
-        handleEnter(event, input, commandHandler, setOutput, setInput, setCommandHistory, setHistoryIndex, commandHistory, historyIndex)
+    function safeStringify(obj: any) {
+        const cache = new Set()
+        return JSON.stringify(obj, (key, value) => {
+            if (typeof value === 'object' && value !== null) {
+                if (cache.has(value)) return
+                cache.add(value)
+            }
+            return value
+        })
     }
+
+    const handleKeyPress = useHandleEnter(input, commandHandler, setOutput, setInput, setCommandHistory, setHistoryIndex, commandHistory, historyIndex)
 
     const handleCommandPrefix = async () => {
         const { prefix } = await commandHandler.handle('')
