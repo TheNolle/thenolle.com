@@ -29,29 +29,20 @@ export function handleEnter(event: React.KeyboardEvent, input: string, commandHa
     if (event.key === 'Enter') {
         event.preventDefault()
 
-        const { prefix, output: commandOutput } = commandHandler.handle(input)
-        const formattedOutput = `${prefix} ${input}\n${commandOutput}`
-
-        if (input.trim() === 'clear') setOutput('')
-        else {
-            if (typeof commandOutput === 'string')
+        commandHandler.handle(input).then(({ prefix, output: commandOutput }) => {
+            if (input.trim() === 'clear') setOutput('')
+            else {
                 setOutput((prevOutput) => <>
                     {prevOutput}
                     <div>{`${prefix} ${input}`}</div>
-                    <div>{commandOutput}</div>
+                    <div className="command-output">{commandOutput}</div>
                 </>)
-            else
-                setOutput((prevOutput) => <>
-                    {prevOutput}
-                    <div>{`${prefix} ${input}`}</div>
-                    <div>{commandOutput}</div>
-                </>)
-        }
+            }
 
-        setInput('')
-
-        setCommandHistory((prevHistory) => [...prevHistory, input])
-        setHistoryIndex(-1)
+            setInput('')
+            setCommandHistory((prevHistory) => [...prevHistory, input])
+            setHistoryIndex(-1)
+        })
     } else if (event.key === 'ArrowUp') {
         event.preventDefault()
         navigateCommandHistory('up', setHistoryIndex, commandHistory, setInput, historyIndex)

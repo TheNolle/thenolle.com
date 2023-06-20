@@ -23,7 +23,8 @@ export const resolve = {
 
 export const output = {
     filename: 'main.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    chunkFilename: '[name].[contenthash].js',
 }
 
 export const devServer = {

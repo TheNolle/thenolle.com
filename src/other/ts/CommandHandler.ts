@@ -1,27 +1,40 @@
-import { clearCommand, currentThemeCommand, helloCommand, listThemesCommand, resetThemeCommand, sampleImageCommand, setThemeCommand } from './commands'
+declare const require: any
+
+const allCommands: { name: string; description: string; usage: string }[] = []
 
 export default class CommandHandler {
-    private commands: { [key: string]: (args: string[]) => string | JSX.Element }
+    private commands: { [key: string]: { name: string; description: string; execute: (args: string[]) => Promise<string | JSX.Element> } }
     private user: string
     private domain: string
     private path: string
 
     constructor() {
-        this.commands = {
-            hello: helloCommand,
-            clear: clearCommand,
-            'current-theme': currentThemeCommand,
-            'list-themes': listThemesCommand,
-            'set-theme': setThemeCommand,
-            'reset-theme': resetThemeCommand,
-            'img': sampleImageCommand,
-        }
+        this.commands = {}
         this.user = 'anonymous'
         this.domain = 'thenolle.com'
         this.path = `~${window.location.pathname}`
+
+        this.loadCommands()
     }
 
-    public handle(input: string): { prefix: string; output: string | JSX.Element } {
+    private async loadCommands() {
+        const context = require.context('./commands', true, /\.(ts|tsx)$/)
+        const commandFiles = context.keys()
+
+        for (const key of commandFiles) {
+            const commandModule = await import(`./commands/${key.slice(2)}`)
+            const { default: command } = commandModule
+            const { name, description, usage, execute } = command
+            this.commands[name] = { name, description, execute }
+            if (!allCommands.find((c) => c.name === name)) allCommands.push({ name, description, usage })
+        }
+    }
+
+    public getCommands(): { name: string; description: string; usage: string }[] {
+        return allCommands
+    }
+
+    public async handle(input: string): Promise<{ prefix: string; output: string | JSX.Element }> {
         const [commandName, ...args] = input.split(' ')
 
         const command = this.commands[commandName]
@@ -29,7 +42,7 @@ export default class CommandHandler {
         const prefix = `${this.user}@${this.domain}:${this.path}$`
         let output: string | JSX.Element = `Command not found: ${commandName}`
 
-        if (command) output = command(args)
+        if (command) output = await command.execute(args)
 
         return { prefix, output }
     }
