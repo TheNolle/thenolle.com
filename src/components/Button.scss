@@ -1,0 +1,297 @@
+button.button-component {
+    --button-padding-tiny: 0.125rem 0.25rem;
+    --button-padding-small: 0.25rem 0.5rem;
+    --button-padding-medium: 0.375rem 0.75rem;
+    --button-padding-large: 0.5rem 1rem;
+    --button-padding-huge: 0.75rem 1.5rem;
+    --button-font-size-tiny: 0.75rem;
+    --button-font-size-small: 0.875rem;
+    --button-font-size-medium: 1rem;
+    --button-font-size-large: 1.25rem;
+    --button-font-size-huge: 1.5rem;
+    --button-line-height: 1.5;
+    --button-border-radius-tiny: 0.15rem;
+    --button-border-radius-small: 0.2rem;
+    --button-border-radius-medium: 0.25rem;
+    --button-border-radius-large: 0.3rem;
+    --button-border-radius-huge: 0.35rem;
+    --button-border-radius-rounded: 0.4rem;
+    --button-border-radius-pill: 50rem;
+
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    outline: none;
+
+    padding: var(--button-padding-medium);
+    font-size: var(--button-font-size-medium);
+    line-height: var(--button-line-height);
+    border: 1px solid transparent;
+    border-radius: var(--button-border-radius-medium);
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+    color: var(--text-color);
+    background-color: var(--background-color);
+    border-color: var(--border-color);
+
+    &.active,
+    &:hover {
+        color: var(--text-color);
+        background-color: var(--background-color);
+        border-color: var(--border-color);
+    }
+
+    &:active {
+        color: var(--text-color);
+        background-color: var(--background-color);
+        border-color: var(--border-color);
+    }
+
+    &:focus {
+        color: var(--text-color);
+        background-color: var(--background-color);
+        border-color: var(--border-color);
+    }
+
+    // Designs
+    &.primary {
+        --text-color: #fff;
+        --background-color: #007bff;
+        --border-color: #007bff;
+
+        &.active,
+        &:hover,
+        &:focus {
+            --background-color: #0056b3;
+            --border-color: #0056b3;
+        }
+
+        &:active {
+            --background-color: #004085;
+            --border-color: #004085;
+        }
+    }
+
+    &.secondary {
+        --text-color: #fff;
+        --background-color: #6c757d;
+        --border-color: #6c757d;
+
+        &.active,
+        &:hover,
+        &:focus {
+            --background-color: #545b62;
+            --border-color: #545b62;
+        }
+
+        &:active {
+            --background-color: #343a40;
+            --border-color: #343a40;
+        }
+    }
+
+    &.tertiary {
+        --text-color: #212529;
+        --background-color: #f8f9fa;
+        --border-color: #f8f9fa;
+
+        &.active,
+        &:hover,
+        &:focus {
+            --background-color: #e2e6ea;
+            --border-color: #dae0e5;
+        }
+
+        &:active {
+            --background-color: #cbd3da;
+            --border-color: #bfc9cf;
+        }
+    }
+
+    &.danger {
+        --text-color: #fff;
+        --background-color: #dc3545;
+        --border-color: #dc3545;
+
+        &.active,
+        &:hover,
+        &:focus {
+            --background-color: #c82333;
+            --border-color: #c82333;
+        }
+
+        &:active {
+            --background-color: #bd2130;
+            --border-color: #b21f2d;
+        }
+    }
+
+    &.warning {
+        --text-color: #212529;
+        --background-color: #ffc107;
+        --border-color: #ffc107;
+
+        &.active,
+        &:hover,
+        &:focus {
+            --background-color: #e0a800;
+            --border-color: #d39e00;
+        }
+
+        &:active {
+            --background-color: #ba8b00;
+            --border-color: #ab7a00;
+        }
+    }
+
+    &.success {
+        --text-color: #fff;
+        --background-color: #28a745;
+        --border-color: #28a745;
+
+        &.active,
+        &:hover,
+        &:focus {
+            --background-color: #218838;
+            --border-color: #1e7e34;
+        }
+
+        &:active {
+            --background-color: #1e7430;
+            --border-color: #19692c;
+        }
+    }
+
+    &.info {
+        --text-color: #fff;
+        --background-color: #17a2b8;
+        --border-color: #17a2b8;
+
+        &.active,
+        &:hover,
+        &:focus {
+            --background-color: #138496;
+            --border-color: #117a8b;
+        }
+
+        &:active {
+            --background-color: #0f6e75;
+            --border-color: #0e6577;
+        }
+    }
+
+    &.disabled {
+        cursor: not-allowed;
+        opacity: 0.65;
+
+        &.active,
+        &:hover,
+        &:active,
+        &:focus {
+            --text-color: #fff;
+            --background-color: #6c757d;
+            --border-color: #6c757d;
+        }
+    }
+
+    // Sizes
+    &.tiny {
+        padding: var(--button-padding-tiny);
+        font-size: var(--button-font-size-tiny);
+        border-radius: var(--button-border-radius-tiny);
+    }
+
+    &.small {
+        padding: var(--button-padding-small);
+        font-size: var(--button-font-size-small);
+        border-radius: var(--button-border-radius-small);
+    }
+
+    &.medium {
+        padding: var(--button-padding-medium);
+        font-size: var(--button-font-size-medium);
+        border-radius: var(--button-border-radius-medium);
+    }
+
+    &.large {
+        padding: var(--button-padding-large);
+        font-size: var(--button-font-size-large);
+        border-radius: var(--button-border-radius-large);
+    }
+
+    &.huge {
+        padding: var(--button-padding-huge);
+        font-size: var(--button-font-size-huge);
+        border-radius: var(--button-border-radius-huge);
+    }
+
+    // Shapes
+    &.squared {
+        border-radius: 0;
+    }
+
+    &.rounded {
+        border-radius: var(--button-border-radius-rounded);
+    }
+
+    &.pill {
+        border-radius: var(--button-border-radius-pill);
+    }
+
+    // Variants
+    &.outline {
+        background-color: transparent;
+        color: var(--border-color);
+        border: 1px solid;
+
+        &.active,
+        &:hover,
+        &:focus {
+            background-color: var(--border-color);
+            color: #fff;
+        }
+
+        &:active {
+            background-color: color-mix(in srgb, var(--border-color), #000 15%);
+        }
+    }
+
+    &.ghost {
+        background-color: transparent;
+        color: var(--text-color);
+        border: none;
+
+        &.active,
+        &:hover,
+        &:focus {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: color-mix(in srgb, var(--text-color), #000 10%);
+        }
+
+        &:active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+    }
+
+    &.text {
+        background-color: transparent;
+        border: none;
+        color: var(--text-color);
+        padding-left: 0;
+        padding-right: 0;
+
+        &.active,
+        &:hover,
+        &:focus {
+            text-decoration: underline;
+            color: color-mix(in srgb, var(--text-color), #000 20%);
+        }
+
+        &:active {
+            color: color-mix(in srgb, var(--text-color), #000 20%);
+        }
+    }
+}

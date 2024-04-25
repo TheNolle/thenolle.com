@@ -14,8 +14,8 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "rm -rf dist && webpack --mode production && echo 'RewriteEngine On\n\n# If an existing asset or directory is requested go to it as it is\nRewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]\nRewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d\nRewriteRule ^ - [L]\n\n# If the requested resource does not exist, use index.html\nRewriteRule ^ /index.html\n\n\n# © 2023 Nolly | Website: thenolle.com | Github: @TheNolle | Patreon: @_nolly' > dist/.htaccess",
-    "start": "webpack serve --mode production --config webpack.config.mjs",
-    "start:dev": "webpack serve --mode development --config webpack.config.mjs"
+    "start": "webpack serve --mode production --config webpack.config.mjs --no-cache",
+    "start:dev": "webpack serve --mode development --config webpack.config.mjs --no-cache"
   },
   "dependencies": {
     "react": "^18.3.0",
