@@ -1,5 +1,6 @@
-node_modules
 .vscode
 dist
+node_modules
 
 package-lock.json
+pnpm-lock.yaml

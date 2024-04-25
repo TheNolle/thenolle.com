@@ -1,0 +1,40 @@
+{
+  // Compiler options
+  "compilerOptions": {
+    // Folders
+    "rootDir": "./src",
+    "outDir": "./dist",
+    // Modules
+    "allowJs": false,
+    "resolveJsonModule": true,
+    "esModuleInterop": true, // Emit additional JavaScript to ease support for CommonJS and AMD modules
+    // Linting
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "noImplicitReturns": true,
+    "noImplicitOverride": true,
+    // Errors
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    // Warnings
+    "strict": true, // Enable all strict type-checking options
+    "skipLibCheck": true, // Skip type checking of declaration files
+    "forceConsistentCasingInFileNames": true, // Enforce consistent casing in file names
+    // Target
+    "target": "ES2022", // Project is compiled to ES2022
+    "module": "CommonJS", // Generate CommonJS modules
+    // Paths
+    "allowSyntheticDefaultImports": true, // Allow default imports from modules with no default export
+    // Source maps
+    "sourceMap": true // Generates corresponding .map file
+  },
+  // Include
+  "include": [
+    "src"
+  ],
+  // Exclude
+  "exclude": [
+    "node_modules",
+    "dist",
+  ]
+}
