@@ -1,0 +1,104 @@
+nav.navbar-component {
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+    background-color: #00000010;
+    backdrop-filter: blur(10px);
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50%;
+        height: 1px;
+        background: radial-gradient(circle, #eeeeee30, transparent);
+    }
+
+    div.content {
+        max-width: 1150px;
+        width: 100%;
+        display: grid;
+        align-items: center;
+        grid-template-columns: 1fr auto auto;
+        gap: 1em;
+
+        img.logo {
+            cursor: pointer;
+            width: auto;
+            height: 1.5em;
+
+            &:focus,
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+
+        div.links {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 2em;
+            margin-right: 1em;
+
+            a.link {
+                color: #bbb;
+                font-size: 0.7em;
+                font-weight: 400;
+                text-decoration: none;
+                transition: color 100ms;
+
+                &:focus,
+                &:hover,
+                &.active {
+                    color: #E5204C;
+                }
+
+                &.disabled,
+                &[aria-disabled='true'] {
+                    cursor: not-allowed;
+                    color: #bbb;
+
+                    &:focus,
+                    &:hover {
+                        color: #bbb;
+                    }
+                }
+            }
+        }
+
+        a.special {
+            --special-color: #E5204C;
+
+            color: var(--special-color);
+            animation: glow-pulse 3000ms infinite;
+
+            &:focus,
+            &:hover {
+                filter: drop-shadow(0 0 10px var(--special-color));
+                animation: none;
+            }
+
+            @keyframes glow-pulse {
+                0% {
+                    filter: drop-shadow(0 0 0 var(--special-color));
+                }
+
+                50% {
+                    filter: drop-shadow(0 0 8px var(--special-color));
+                }
+
+                100% {
+                    filter: drop-shadow(0 0 0 var(--special-color));
+                }
+            }
+        }
+    }
+}
