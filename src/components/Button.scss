@@ -59,19 +59,19 @@ button.button-component {
     // Designs
     &.primary {
         --text-color: #fff;
-        --background-color: #007bff;
-        --border-color: #007bff;
+        --background-color: #E5204C;
+        --border-color: #E5204C;
 
         &.active,
         &:hover,
         &:focus {
-            --background-color: #0056b3;
-            --border-color: #0056b3;
+            --background-color: #D81B45;
+            --border-color: #D81B45;
         }
 
         &:active {
-            --background-color: #004085;
-            --border-color: #004085;
+            --background-color: #C4173E;
+            --border-color: #C4173E;
         }
     }
 
